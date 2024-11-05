@@ -39,14 +39,14 @@ describe("Buku Controller", () => {
     } as Partial<Request>;
 
     const mockBook = {
-      kodebuku: 123,
+      // kodebuku: 123,
       judul: "Test Book",
       deskripsi: "Description",
       tersedia: true,
       pengarang: "Author",
       harga: 100,
       save: jest.fn().mockResolvedValue({
-        kodebuku: 123,
+        // kodebuku: 123,
         judul: "Test Book",
         deskripsi: "Description",
         tersedia: true,
