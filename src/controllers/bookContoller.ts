@@ -38,7 +38,7 @@ export const dataBuku = async (
 ): Promise<void> => {
   try {
     const book = await Book.find();
-    Res.status(200).json(apiResponse(true, "Data Buku Tesedia", { book }));
+    Res.status(200).json(apiResponse(true, "Data Buku Tersedia", { book }));
   } catch (error) {
     Res.status(500).json(apiResponse(false, "Data Buku Tidak Tersedia"));
   }

@@ -39,6 +39,7 @@ describe("Buku Controller", () => {
     } as Partial<Request>;
 
     const mockBook = {
+      _id: "672a3f6f59ebea24fdd00ec8",
       kodebuku: 123,
       judul: "Test Book",
       deskripsi: "Description",
@@ -48,6 +49,7 @@ describe("Buku Controller", () => {
     };
 
     jest.spyOn(Book.prototype, "save").mockResolvedValue(mockBook);
+    // jest.spyOn(Math, "random").mockReturnValue(0.123);
 
     await TambahBuku(
       mockRequest as Request,
