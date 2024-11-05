@@ -38,24 +38,16 @@ describe("Buku Controller", () => {
       },
     } as Partial<Request>;
 
-    const mockBuku = {
+    const mockBook = {
       kodebuku: 123,
       judul: "Test Book",
       deskripsi: "Description",
       tersedia: true,
       pengarang: "Author",
       harga: 100,
-      save: jest.fn().mockResolvedValue({
-        kodebuku: 123,
-        judul: "Test Book",
-        deskripsi: "Description",
-        tersedia: true,
-        pengarang: "Author",
-        harga: 100,
-      }),
     };
 
-    jest.spyOn(Book.prototype, "save").mockResolvedValue(mockBuku);
+    jest.spyOn(Book.prototype, "save").mockResolvedValue(mockBook);
 
     await TambahBuku(
       mockRequest as Request,
@@ -65,26 +57,26 @@ describe("Buku Controller", () => {
 
     expect(status).toHaveBeenCalledWith(200);
     expect(json).toHaveBeenCalledWith(
-      apiResponse(true, "Buku Berhasil Di Tambahkan", { buku: mockBuku })
+      apiResponse(true, "Buku Berhasil Di Tambahkan", { book: mockBook })
     );
   });
 
   it("should fetch all books", async () => {
-    const mockBukuList = [{ kodebuku: 123, judul: "Test Book" }];
-    jest.spyOn(Book, "find").mockResolvedValue(mockBukuList);
+    const mockBookList = [{ kodebuku: 123, judul: "Test Book" }];
+    jest.spyOn(Book, "find").mockResolvedValue(mockBookList);
 
     await dataBuku(mockRequest as Request, mockResponse as Response, mockNext);
 
     expect(status).toHaveBeenCalledWith(200);
     expect(json).toHaveBeenCalledWith(
-      apiResponse(true, "Data Buku Tersedia", { buku: mockBukuList })
+      apiResponse(true, "Data Buku Tersedia", { book: mockBookList })
     );
   });
 
   it("should fetch details of a specific book", async () => {
     mockRequest = { params: { kodebuku: "123" } } as Partial<Request>;
-    const mockBukuDetail = { kodebuku: 123, judul: "Test Book" };
-    jest.spyOn(Book, "findOne").mockResolvedValue(mockBukuDetail);
+    const mockBookDetail = { kodebuku: 123, judul: "Test Book" };
+    jest.spyOn(Book, "findOne").mockResolvedValue(mockBookDetail);
 
     await detailBuku(
       mockRequest as Request,
@@ -94,14 +86,14 @@ describe("Buku Controller", () => {
 
     expect(status).toHaveBeenCalledWith(200);
     expect(json).toHaveBeenCalledWith(
-      apiResponse(true, "Detail Data Berhasil", { detail: mockBukuDetail })
+      apiResponse(true, "Detail Data Berhasil", { detail: mockBookDetail })
     );
   });
 
   it("should delete a book", async () => {
     mockRequest = { params: { id: "123" } } as Partial<Request>;
-    const mockBuku = { kodebuku: 123, judul: "Test Book" };
-    jest.spyOn(Book, "findByIdAndDelete").mockResolvedValue(mockBuku);
+    const mockBook = { kodebuku: 123, judul: "Test Book" };
+    jest.spyOn(Book, "findByIdAndDelete").mockResolvedValue(mockBook);
 
     await deleteBuku(
       mockRequest as Request,
@@ -111,7 +103,7 @@ describe("Buku Controller", () => {
 
     expect(status).toHaveBeenCalledWith(200);
     expect(json).toHaveBeenCalledWith(
-      apiResponse(true, "Buku Berhasil Di Hapus", { buku: mockBuku })
+      apiResponse(true, "Buku Berhasil Di Hapus", { buku: mockBook })
     );
   });
 
