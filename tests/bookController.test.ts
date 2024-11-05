@@ -45,10 +45,17 @@ describe("Buku Controller", () => {
       tersedia: true,
       pengarang: "Author",
       harga: 100,
+      save: jest.fn().mockResolvedValue({
+        kodebuku: 123,
+        judul: "Test Book",
+        deskripsi: "Description",
+        tersedia: true,
+        pengarang: "Author",
+        harga: 100,
+      }),
     };
 
     jest.spyOn(Book.prototype, "save").mockResolvedValue(mockBook);
-    jest.spyOn(Math, "random").mockReturnValue(0.123);
 
     await TambahBuku(
       mockRequest as Request,
