@@ -31,7 +31,11 @@ export const TambahBuku: RequestHandler = async (
   }
 };
 
-export const dataBuku = async (Req: Request, Res: Response): Promise<void> => {
+export const dataBuku = async (
+  Req: Request,
+  Res: Response,
+  mockNext: unknown
+): Promise<void> => {
   try {
     const book = await Book.find();
     Res.status(200).json(apiResponse(true, "Data Buku Tesedia", { book }));
@@ -42,7 +46,8 @@ export const dataBuku = async (Req: Request, Res: Response): Promise<void> => {
 
 export const detailBuku = async (
   Req: Request,
-  Res: Response
+  Res: Response,
+  mockNext: unknown
 ): Promise<void> => {
   const { kodebuku } = Req.params;
 
@@ -65,7 +70,8 @@ export const detailBuku = async (
 
 export const deleteBuku = async (
   Req: Request,
-  Res: Response
+  Res: Response,
+  mockNext: unknown
 ): Promise<void> => {
   const { id } = Req.params;
   try {
@@ -84,7 +90,8 @@ export const deleteBuku = async (
 
 export const updateBuku = async (
   Req: Request,
-  Res: Response
+  Res: Response,
+  mockNext: unknown
 ): Promise<void> => {
   const { id } = Req.params;
   try {

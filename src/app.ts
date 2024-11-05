@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./routes/authRoutes";
-import routerBuku from "./routes/bukuRoutes";
+import routerBuku from "./routes/bookRoutes";
 import bodyParser from "body-parser";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";

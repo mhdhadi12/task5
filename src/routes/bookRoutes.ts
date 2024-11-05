@@ -5,7 +5,7 @@ import {
   detailBuku,
   TambahBuku,
   updateBuku,
-} from "../controllers/bukuContoller";
+} from "../controllers/bookContoller";
 import { protect } from "../middleware/authMiddleware";
 
 const routerBuku = Router();
