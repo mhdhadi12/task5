@@ -9,7 +9,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
-const bukuRoutes_1 = __importDefault(require("./routes/bukuRoutes"));
+const bookRoutes_1 = __importDefault(require("./routes/bookRoutes"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
@@ -27,7 +27,7 @@ app.use(body_parser_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Router
 app.use("/api/auth", authRoutes_1.default);
-app.use("/api/buku", bukuRoutes_1.default);
+app.use("/api/buku", bookRoutes_1.default);
 exports.swaggerDocs = (0, swagger_jsdoc_1.default)(swaggerConfig_1.default);
 app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(exports.swaggerDocs));
 // Connect Database
